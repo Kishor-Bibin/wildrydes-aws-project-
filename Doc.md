@@ -47,7 +47,7 @@ The project uses several AWS services, all of which fall under the AWS Free Tier
     - Click "Next" and then "Add permissions".
     
     **Screenshot: Attach IAM Policy**
-    [Add screenshot of attaching AWSCodeCommitPowerUser policy]
+
     
 3. **Generate Git Credentials:**
     - In your IAM user settings, go to "Security credentials".
@@ -66,7 +66,6 @@ The project uses several AWS services, all of which fall under the AWS Free Tier
     - Enter your generated credentials (Git username and password) when prompted.
     
     **Screenshot: Cloning the Repository in CloudShell**
-    [Add screenshot of CloudShell cloning the repository]
 
 5. **Copy Code from S3:**
     - Navigate into the cloned repository directory in CloudShell:
@@ -84,7 +83,7 @@ The project uses several AWS services, all of which fall under the AWS Free Tier
         
     
     **Screenshot: Copying Code from S3 Bucket**
-    [Add screenshot of CloudShell copying code from S3]
+    
 
 6. **Commit and Push the Code:**
     - Add all the copied files to the Git staging area:
@@ -135,15 +134,15 @@ The project uses several AWS services, all of which fall under the AWS Free Tier
     - Review the settings and click "Save and deploy".
     
     **Screenshot: Creating Amplify App**
-    [Add screenshot of creating an Amplify app connected to CodeCommit]
+   
 
 2. **Wait for Deployment:**
     - Amplify will provision the necessary infrastructure, build the application, and deploy it.
     - Once the deployment is successful, you will see green checkmarks in the Amplify console.
         
     
-    **Screenshot: Amplify Deployment Success**
-    [Add screenshot of Amplify console showing successful deployment]
+    
+   
 
 3. **Test the Deployed Website:**
     - Open the website using the provided link in the Amplify console. You should see the basic Wild Rides website.
@@ -363,6 +362,7 @@ The project uses several AWS services, all of which fall under the AWS Free Tier
 2. **Test the End-to-End Functionality:**
     - Go to the Wild Rides website and ensure you are logged in.
     - You should now see an interactive map.
+      ![](https://github.com/Kishor-Bibin/wildrydes-aws-project-/blob/82ebbe92280d346c029719c5b258b18ca3a9aa9a/images/final-demo.png)
     - Zoom in to a location and click on the map to request a unicorn ride.
     - You should see a unicorn animation traveling to your selected location.
     - Verify that a new item is added to the DynamoDB table with the ride details.
