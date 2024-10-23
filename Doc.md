@@ -36,8 +36,7 @@ The project uses several AWS services, all of which fall under the AWS Free Tier
     - Click "Create repository".
     - Name your repository `wild-rides-site` (or similar) and click "Create".
     
-    **Screenshot: Create CodeCommit Repository**
-    [Add screenshot of CodeCommit repository creation page]
+
     
 2. **Configure IAM Permissions:**
     - Open a new tab in the AWS Console and go to IAM.
@@ -46,7 +45,7 @@ The project uses several AWS services, all of which fall under the AWS Free Tier
     - Search for "AWSCodeCommitPowerUser" and select the policy.
     - Click "Next" and then "Add permissions".
     
-    **Screenshot: Attach IAM Policy**
+
 
     
 3. **Generate Git Credentials:**
@@ -65,7 +64,7 @@ The project uses several AWS services, all of which fall under the AWS Free Tier
         
     - Enter your generated credentials (Git username and password) when prompted.
     
-    **Screenshot: Cloning the Repository in CloudShell**
+
 
 5. **Copy Code from S3:**
     - Navigate into the cloned repository directory in CloudShell:
@@ -82,7 +81,7 @@ The project uses several AWS services, all of which fall under the AWS Free Tier
         ```
         
     
-    **Screenshot: Copying Code from S3 Bucket**
+
     
 
 6. **Commit and Push the Code:**
@@ -133,7 +132,7 @@ The project uses several AWS services, all of which fall under the AWS Free Tier
     - Create a new service role and click "Next".
     - Review the settings and click "Save and deploy".
     
-    **Screenshot: Creating Amplify App**
+
    
 
 2. **Wait for Deployment:**
@@ -147,8 +146,7 @@ The project uses several AWS services, all of which fall under the AWS Free Tier
 3. **Test the Deployed Website:**
     - Open the website using the provided link in the Amplify console. You should see the basic Wild Rides website.
     
-    **Screenshot: Basic Wild Rides Website**
-    [Add screenshot of the initial Wild Rides website]
+ 
     
 4. **Verify Continuous Deployment:**
     - Make a small change to the `index.html` file in your CodeCommit repository (e.g., modify some text).
@@ -168,8 +166,7 @@ The project uses several AWS services, all of which fall under the AWS Free Tier
     - Name the user pool `demoweb` (or similar) and create an app client named `demoweb-app`.
     - Review the settings and create the user pool.
     
-    **Screenshot: Create Cognito User Pool**
-    [Add screenshot of the Cognito user pool creation page]
+
 
 2. **Note User Pool and Client IDs:**
     - Copy the **User Pool ID** from the "General information" section.
@@ -185,8 +182,7 @@ The project uses several AWS services, all of which fall under the AWS Free Tier
     - Update the `region` to match your AWS region.
     - **Save and commit the changes**.
     
-    **Screenshot: Updating config.js**
-    [Add screenshot of updating userPoolId, userPoolClientId, and region in config.js]
+  
 
 4. **Test Registration and Login:**
     - Once Amplify has redeployed the application, refresh the Wild Rides website.
@@ -207,15 +203,13 @@ The project uses several AWS services, all of which fall under the AWS Free Tier
     - Set the partition key to `rideId` with the data type "String".
     - Create the table.
     
-    **Screenshot: Creating DynamoDB Table**
-    [Add screenshot of the DynamoDB table creation page]
+
     
 2. **Note the Table ARN:**
     - Once the table is active, click into it.
     - Expand "Additional info" and copy the **Amazon Resource Name (ARN)**.
     
-    **Screenshot: DynamoDB Table ARN**
-    [Add screenshot showing the DynamoDB table ARN]
+
     
 
 ### 4.2 Creating the Lambda Function
@@ -228,8 +222,7 @@ The project uses several AWS services, all of which fall under the AWS Free Tier
     - Attach this policy and click "Next".
     - Name the role `wild-rides-lambda` (or similar) and create it.
     
-    **Screenshot: Creating IAM Role for Lambda**
-    [Add screenshot of the IAM role creation page for Lambda]
+
     
 2. **Add DynamoDB Write Permissions to the Role:**
     - Open the newly created `wild-rides-lambda` role.
@@ -240,8 +233,7 @@ The project uses several AWS services, all of which fall under the AWS Free Tier
     - Paste the copied DynamoDB table ARN and click "Add ARNs".
     - Click "Next", name the policy "DynamoDBWriteAccess", and create it.
     
-    **Screenshot: Adding DynamoDB Permissions to Role**
-    [Add screenshots showing the process of adding DynamoDB write permissions to the Lambda role]
+  
     
 3. **Create the Lambda Function:**
     - Go to the Lambda service in the AWS Console.
@@ -251,22 +243,18 @@ The project uses several AWS services, all of which fall under the AWS Free Tier
     - Choose "Use an existing role" for the execution role and select the `wild-rides-lambda` role.
     - Create the function.
     
-    **Screenshot: Creating the Lambda Function**
-    [Add screenshot of the Lambda function creation page]
+  
     
 4. **Update Lambda Function Code:**
     - Replace the default Lambda function code with the provided code from the YouTube video description (link in source).
     - **Make sure to update the table name in the `recordRide` function if you used a different name for your DynamoDB table**.
     
-    **Screenshot: Lambda Function Code**
-    [Add screenshot showing the updated Lambda function code]
+  
     
 5. **Deploy the Lambda Function:**
     - Click the "Deploy" button to save and deploy the changes.
     
-    **Screenshot: Deploying the Lambda Function**
-    [Add screenshot of the Lambda function deployment button]
-    
+
 6. **Test the Lambda Function:**
     - Click the arrow next to "Test" and choose "Configure test event".
     - Name the event "TestRequestEvent".
@@ -274,9 +262,7 @@ The project uses several AWS services, all of which fall under the AWS Free Tier
     - Click "Save" and then "Test".
     - You should see a successful execution with a status code of 201 and unicorn details in the output.
     - Verify that an item has been written to the DynamoDB table.
-    
-    **Screenshot: Testing the Lambda Function**
-    [Add screenshots showing the test event configuration and successful Lambda function execution]
+   
     
 
 ### 4.3 Setting up API Gateway
@@ -288,8 +274,7 @@ The project uses several AWS services, all of which fall under the AWS Free Tier
     - Select "Edge optimized" for the endpoint type.
     - Create the API.
     
-    **Screenshot: Creating REST API**
-    [Add screenshot of the API Gateway REST API creation page]
+   
     
 2. **Create a Cognito Authorizer:**
     - Go to "Authorizers" in the left-hand menu.
@@ -300,16 +285,14 @@ The project uses several AWS services, all of which fall under the AWS Free Tier
     - Set the "Token Source" to "Authorization".
     - Create the authorizer.
     
-    **Screenshot: Creating Cognito Authorizer**
-    [Add screenshot of the Cognito authorizer creation page in API Gateway]
+   
     
 3. **Test the Authorizer:**
     - Click into the newly created authorizer.
     - Paste the authorization token you copied earlier (from the `ride.html` page after logging in).
     - Click "Test". You should get a successful response with a status code of 200.
     
-    **Screenshot: Testing the Authorizer**
-    [Add screenshot of the authorizer test page showing a successful result]
+  
     
 4. **Create a Resource and Method:**
     - Go back to the "Resources" tab.
@@ -319,23 +302,20 @@ The project uses several AWS services, all of which fall under the AWS Free Tier
     - Choose "Lambda Function" as the integration type and **enable "Lambda Proxy integration"**.
     - Select your `request-unicorn` Lambda function and create the method.
     
-    **Screenshot: Creating Resource and Method**
-    [Add screenshots showing the process of creating the resource and POST method in API Gateway]
+    
     
 5. **Configure Method Request Authorization:**
     - Select the "Method Request" for the POST method.
     - Under "Authorization", select your `wild-rides-authorizer` Cognito user pool.
     - Save the settings.
     
-    **Screenshot: Configuring Authorization**
-    [Add screenshot showing the authorization settings for the POST method]
+    
     
 6. **Deploy the API:**
     - Click the "Deploy API" button.
     - Create a new stage named `dev` (or similar) and deploy.
     
-    **Screenshot: Deploying the API**
-    [Add screenshot of the API Gateway deployment page]
+
     
 7. **Note the Invoke URL:**
     - Copy the **Invoke URL** for the deployed API stage.
@@ -369,7 +349,7 @@ The project uses several AWS services, all of which fall under the AWS Free Tier
 
 ### 6. Cleaning Up Resources
 
-**Important:**  After you are finished with the project, follow the instructions in source to delete all the AWS resources you created. This will prevent any unexpected charges.
+**Important:**  After you are finished with the project delete all the AWS resources you created. This will prevent any unexpected charges.
 
 ## Conclusion
 
